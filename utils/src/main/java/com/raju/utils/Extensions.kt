@@ -1,5 +1,8 @@
 package com.raju.utils
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.bumptech.glide.Glide
@@ -34,5 +37,15 @@ fun AppCompatTextView.formatDate(value: String? = null) {
         val stringDate = dateFormat.format(date)
         this.text = stringDate
 
+    }
+}
+
+fun Activity.hideSoftKeyboard() {
+    if (currentFocus != null) {
+        val inputMethodManager = getSystemService(
+            Context
+                .INPUT_METHOD_SERVICE
+        ) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }
 }

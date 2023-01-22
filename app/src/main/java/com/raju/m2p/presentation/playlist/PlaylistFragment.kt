@@ -16,6 +16,7 @@ import com.raju.m2p.presentation.player.PlayerActivity
 import com.raju.m2p.presentation.playlist.adapter.PlaylistAdapter
 import com.raju.m2p.presentation.utils.AdaptiveSpacingItemDecoration
 import com.raju.m2p.presentation.utils.AppUtility
+import com.raju.utils.hideSoftKeyboard
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -57,6 +58,7 @@ class PlaylistFragment : Fragment() {
             val tabPosition = it.tabPosition
             searchTabPosition = tabPosition
             setupRV(tabPosition)
+            activity?.hideSoftKeyboard()
             binding.etSearch.setText("")
             if (tabPosition == 0) {
                 for (list in it.result) {
@@ -74,7 +76,7 @@ class PlaylistFragment : Fragment() {
 
         sharedVM.filteredPlaylist.observe(viewLifecycleOwner) {
             MainScope().launch {
-                delay(50)
+                delay(70)
                 if (searchTabPosition == 0) {
                     playlistAdapterGrid?.filterList(it)
                 } else {
@@ -112,9 +114,7 @@ class PlaylistFragment : Fragment() {
                 if (playlistAdapterGrid == null) {
                     playlistAdapterGrid = PlaylistAdapter(
                         onItemClick = { data: ResultBean? ->
-                            val intent = Intent(requireActivity(), PlayerActivity::class.java)
-                            intent.putExtra("data", data)
-                            startActivity(intent)
+                            data?.let { it1 -> openPlayer(it1) }
                         }, this
                     )
                     binding.rvPlaylist.adapter = playlistAdapterGrid
@@ -127,9 +127,7 @@ class PlaylistFragment : Fragment() {
                 if (playlistAdapterLinear == null) {
                     playlistAdapterLinear = PlaylistAdapter(
                         onItemClick = { data: ResultBean? ->
-                            val intent = Intent(requireActivity(), PlayerActivity::class.java)
-                            intent.putExtra("data", data)
-                            startActivity(intent)
+                            data?.let { it1 -> openPlayer(it1) }
                         }, this
                     )
                     binding.rvPlaylist.adapter = playlistAdapterLinear
@@ -138,7 +136,12 @@ class PlaylistFragment : Fragment() {
                 }
             }
         }
+    }
 
+    private fun openPlayer(data: ResultBean) {
+        val intent = Intent(requireActivity(), PlayerActivity::class.java)
+        intent.putExtra("data", data)
+        startActivity(intent)
     }
 
 }
