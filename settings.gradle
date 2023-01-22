@@ -1,4 +1,4 @@
-rootProject.name = "um"
+rootProject.name = "m2p"
 include ':app'
 include ':data'
 include ':domain'

@@ -2,7 +2,7 @@ package com.raju.data
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.raju.data.network.UMApiInterface
+import com.raju.data.network.M2PApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,18 +24,18 @@ object NetworkModule {
     @Provides
     @Singleton
     @Named("api")
-    fun provideUMApiInterface(
+    fun provideM2PApiInterface(
         gson: Gson,
         @Named("base_url") baseUrl: String,
         @Named("client_app") okHttpClient: OkHttpClient,
-    ): UMApiInterface {
+    ): M2PApiInterface {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
-            .create(UMApiInterface::class.java)
+            .create(M2PApiInterface::class.java)
     }
 
 

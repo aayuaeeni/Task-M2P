@@ -1,7 +1,7 @@
 package com.raju.data
 
-import com.raju.data.repository.JokesDataRepository
-import com.raju.domain.repository.JokesRepository
+import com.raju.data.repository.PlaylistDataRepository
+import com.raju.domain.repository.PlaylistRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ object DataModule {
 
     @Singleton
     @Provides
-    fun provideJokesDataRepository(jokesDataRepository: JokesDataRepository): JokesRepository {
-        return jokesDataRepository
+    fun providePlaylistDataRepository(playlistDataRepository: PlaylistDataRepository): PlaylistRepository {
+        return playlistDataRepository
     }
 
 }

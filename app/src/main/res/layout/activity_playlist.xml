@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.playlist.PlaylistActivity">
+
+    <include
+        android:id="@+id/iTopView"
+        layout="@layout/common_top_view" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlTabs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_below="@+id/iTopView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:background="@color/white"
+        android:clickable="false"
+        android:foreground="@null"
+        android:overScrollMode="never"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:tabIndicatorColor="@color/primary_red"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorHeight="@dimen/_2sdp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/primary_red"
+        app:tabTextColor="@color/black"
+        tools:ignore="MissingPrefix" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tlTabs"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@color/white"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <include
+        android:id="@+id/iLoadedView"
+        layout="@layout/loader" />
+</RelativeLayout>
+

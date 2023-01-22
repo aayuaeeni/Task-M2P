@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlContainer"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_70sdp">
+
+    <RelativeLayout
+        android:id="@+id/rlImageContainer"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:background="@color/black"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/play"
+            android:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTrackTitle"
+        fontPath="fonts/OpenSans-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_toEndOf="@+id/rlImageContainer"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        tools:text="Raju Sah" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTrackName"
+        fontPath="fonts/OpenSans-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTrackTitle"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_toEndOf="@+id/rlImageContainer"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10ssp"
+        tools:text="Raju Sah" />
+
+</RelativeLayout>
